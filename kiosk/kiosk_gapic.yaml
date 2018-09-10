@@ -48,7 +48,7 @@ interfaces:
       title: "hzyi test"
       description: "test sample generations"
       parameters:
-      defaults:
+        defaults:
         - id=12345
       on_success:
       - print:
