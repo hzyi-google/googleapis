@@ -2,6 +2,7 @@ common:
   api_name: kiosk
   api_version: v1
   organization_name: actools
+  service_yaml: kiosk_yaml
   gapic_yaml: kiosk_gapic.yaml
   src_proto_paths:
   - v1
