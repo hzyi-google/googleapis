@@ -49,7 +49,7 @@ interfaces:
     retry_params_name: default
     timeout_millis: 30000
     sample_value_sets:
-    - id: hzyi-test
+    - id: hzyi_test
       title: "hzyi test"
       description: "test sample generations"
       parameters:
@@ -61,5 +61,5 @@ interfaces:
     samples:
       standalone:
       - calling_forms: ".*"
-        value_sets: [hzyi-test]
+        value_sets: [hzyi_test]
   
