@@ -45,6 +45,9 @@ interfaces:
     total_timeout_millis: 30000
   methods:
   - name: GetKiosk
+    retry_codes_name: idempotent
+    retry_params_name: default
+    timeout_millis: 30000
     sample_value_sets:
     - id: hzyi-test
       title: "hzyi test"
