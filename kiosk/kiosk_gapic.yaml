@@ -54,8 +54,8 @@ interfaces:
       - print:
         - "Kiosk: %s"
         - kiosk
-    - samples:
+    samples:
       standalone:
       - calling_forms: ".*"
-      - value_sets: [hzyi-test]
+        value_sets: [hzyi-test]
   
