@@ -14,15 +14,15 @@
 
 syntax = "proto3";
 
-package com.google.cloud.kiosk.v1;
-
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 import "google/type/latlng.proto";
 
 option java_multiple_files = true;
 option java_outer_classname = "DisplayProto";
-option java_package = "com.google.kiosk.v1";
+option java_package = "kiosk.v1";
+
+package kiosk;
 
 service Display {
 
