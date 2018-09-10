@@ -44,11 +44,18 @@ interfaces:
   methods:
   - name: GetKiosk
     sample_value_sets:
-    id: hzyi-test
-    title: "hzyi test"
-    description: "test sample generations"
-    on_success:
+    - id: hzyi-test
+      title: "hzyi test"
+      description: "test sample generations"
+      parameters:
+      defaults:
+        - id=12345
+      on_success:
       - print:
         - "Kiosk: %s"
         - kiosk
+    - samples:
+      standalone:
+      - calling_forms: ".*"
+      - value_sets: [hzyi-test]
   
