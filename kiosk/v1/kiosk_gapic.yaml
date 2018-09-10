@@ -20,6 +20,8 @@ language_settings:
     domain_layer_location: google-cloud
   csharp:
     package_name: Kiosk.V1
+  php:
+    package_name: Kiosk\V1
 license_header:
   copyright_file: copyright-google.txt
   license_file: license-header-apache-2.0.txt
