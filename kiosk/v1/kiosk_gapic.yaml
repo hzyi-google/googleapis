@@ -57,8 +57,7 @@ interfaces:
         - id=12345
       on_success:
       - print:
-        - "Kiosk: %s"
-        - kiosk
+        - "Done!"
     samples:
       standalone:
       - calling_forms: ".*"
