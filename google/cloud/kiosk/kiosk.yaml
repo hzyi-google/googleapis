@@ -4,7 +4,7 @@ name: kiosk
 title: Google Cloud Natural Language API
 
 apis:
-- name: kiosk.Display
+- name: google.cloud.kiosk.v1.Display
 
 documentation:
   summary:
