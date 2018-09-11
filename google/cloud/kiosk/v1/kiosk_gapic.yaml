@@ -56,10 +56,10 @@ interfaces:
         defaults:
         - id=1024
       on_success:
-      - define: response=$resp
+      - define: kiosk=$resp
       - print:
         - "Response: %s"
-        - response
+        - kiosk
     samples:
       standalone:
       - calling_forms: ".*"
@@ -83,6 +83,6 @@ interfaces:
     samples:
       standalone:
       - calling_forms: ".*"
-        value_sets: [get_kiosk_method_sample]
+        value_sets: [list_signs_method_sample]
 
   
