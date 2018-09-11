@@ -56,6 +56,7 @@ interfaces:
         defaults:
         - id=1024
       on_success:
+      - define: response=$resp
       - print:
         - "Response: %s"
         - response
