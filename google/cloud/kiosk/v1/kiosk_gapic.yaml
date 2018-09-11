@@ -73,12 +73,12 @@ interfaces:
       description: "List Signs Method Sample"
       on_success:
       - loop:
-        variable: sign
-        collection: $resp.signs
-        body:
-          print:
-            - "Sign: %s"
-            - sign
+          variable: sign
+          collection: $resp.signs
+          body:
+            print:
+              - "Sign: %s"
+              - sign
     samples:
       standalone:
       - calling_forms: ".*"
