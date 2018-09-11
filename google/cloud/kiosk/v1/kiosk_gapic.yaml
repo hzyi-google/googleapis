@@ -49,17 +49,39 @@ interfaces:
     retry_params_name: default
     timeout_millis: 30000
     sample_value_sets:
-    - id: hzyi_test
-      title: "hzyi test"
-      description: "test sample generations"
+    - id: get_kiosk_method_sample
+      title: "Get Kiosk Method Sample"
+      description: "Get Kiosk Method Sample"
       parameters:
         defaults:
-        - id=12345
+        - id=1024
       on_success:
       - print:
-        - "Done!"
+        - "Response: %s"
+        - response
     samples:
       standalone:
       - calling_forms: ".*"
-        value_sets: [hzyi_test]
+        value_sets: [get_kiosk_method_sample]
+  - name: ListSigns
+    retry_codes_name: idempotent
+    retry_params_name: default
+    timeout_millis: 30000
+    sample_value_sets:
+    - id: list_signs_method_sample
+      title: "List Signs Method Sample"
+      description: "List Signs Method Sample"
+      on_success:
+      - loop:
+        variable: sign
+        collection: $resp.signs
+        body:
+          print:
+            - "Sign: %s"
+            - sign
+    samples:
+      standalone:
+      - calling_forms: ".*"
+        value_sets: [get_kiosk_method_sample]
+
   
