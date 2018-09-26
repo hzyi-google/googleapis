@@ -58,6 +58,30 @@ interfaces:
     retry_codes_name: idempotent
     retry_params_name: default
     timeout_millis: 30000
+    sample_value_sets:
+    - id: analyze_sentiment
+      title: "Analyzing Sentiment"
+      description: "Proof of concept for analyzing sentiment"
+      parameters:
+        defaults:
+        - document.type=PLAIN_TEXT
+        - document.content="Your text to analyze, e.g. Hello, world!"
+        attributes:
+        - parameter: document.content
+          sample_argument: true
+      on_success:
+      - define: sentiment=$resp.document_sentiment
+      - print:
+        - "Score: %s"
+        - sentiment.score
+      - print:
+        - "Magnitude: %s"
+        - sentiment.magnitude
+    samples:
+      standalone:
+      - calling_forms: ".*"
+        value_sets: analyze_sentiment
+        region_tag: analyze_sentiment
   - name: AnalyzeEntities
     flattening:
       groups:
