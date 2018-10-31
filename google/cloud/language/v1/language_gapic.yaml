@@ -68,7 +68,7 @@ interfaces:
         - document.content="Your text to analyze, e.g. Hello, world!"
         attributes:
         - parameter: document.content
-          sample_argument: true
+          sample_argument_name: document
       on_success:
       - define: sentiment=$resp.document_sentiment
       - print:
