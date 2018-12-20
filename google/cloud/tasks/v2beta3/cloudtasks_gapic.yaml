@@ -182,6 +182,27 @@ interfaces:
     field_name_patterns:
       parent: location
     timeout_millis: 10000
+    sample_value_sets:
+    - id: create_queue
+      title: "Create Queue"
+      description: "Proof of concept for creating queues"
+      parameters:
+        defaults:
+        - queue.name%project = my_project
+        - queue.name%location = my_location
+        - queue.name%queue = my_queue
+        - parent.name%project = my_project
+        - parent.name%location = my_location
+        attributes:
+        - parameter: queue.name%project
+          sample_argument_name: queue_name
+        - parameter: queue.name%location
+          sample_argument_name: location_id
+    samples:
+      standalone:
+      - calling_forms: ".*"
+        value_sets: create_queue
+        region_tag: create_queue
   - name: UpdateQueue
     resource_name_treatment: STATIC_TYPES
     flattening:

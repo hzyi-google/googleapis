@@ -58,6 +58,19 @@ interfaces:
     retry_codes_name: idempotent
     retry_params_name: default
     timeout_millis: 30000
+    sample_value_sets:
+    - id: analyze_sentiment
+      title: "Analyzing Sentiment"
+      description: "Proof of concept for analyzing sentiment"
+      parameters:
+        defaults:
+        - document.type=PLAIN_TEXT
+        - document.content="Your text to analyze, e.g. Hello, world!"
+    samples:
+      standalone:
+      - calling_forms: ".*"
+        value_sets: analyze_sentiment
+        region_tag: analyze_sentiment
   - name: AnalyzeEntities
     flattening:
       groups:
@@ -70,6 +83,32 @@ interfaces:
     retry_codes_name: idempotent
     retry_params_name: default
     timeout_millis: 30000
+    sample_value_sets:
+    - id: analyze_entities
+      title: "Analyzing Entities"
+      description: "Proof of concept for analyzing entities"
+      parameters:
+        defaults:
+        - document.type=PLAIN_TEXT
+        - document.content="Your text to analyze, e.g. Hello, world!"
+        - encoding_type=NONE
+        on_success:
+        - loop:
+            variable: entity
+            collection: $resp.entities
+            body:
+              print:
+                - "entity: %s"
+                - entity
+        - define: lang = $resp.language
+        - print:
+            - "language in the response: %s"
+            - lang
+    samples:
+      standalone:
+      - calling_forms: ".*"
+        value_sets: analyze_entities
+        region_tag: analyze_entities
   - name: AnalyzeEntitySentiment
     flattening:
       groups:
@@ -119,3 +158,37 @@ interfaces:
     retry_codes_name: idempotent
     retry_params_name: default
     timeout_millis: 30000
+    sample_value_sets:
+    - id: annotate_text
+      title: "Annotate Text"
+      description: "Proof of concept for annotating texts"
+      parameters:
+        defaults:
+        - document.type=PLAIN_TEXT
+        - document.content="Your text to analyze, e.g. Hello, world!"
+        - encoding_type=NONE
+        - features.extract_syntax=true
+        - features.extract_entities=true
+        attributes:
+        - parameter: features.extract_syntax
+          sample_argument_name: should_extract_syntax_info
+        - parameter: features.extract_entities
+          sample_argument_name: extract_entities
+        on_success:
+        - loop:
+            variable: entity
+            collection: $resp.entities
+            body:
+              print:
+                - "entity: %s"
+                - entity
+        - define: lang = $resp.language
+        - print:
+            - "language in the response: %s"
+            - lang
+    samples:
+      standalone:
+      - calling_forms: ".*"
+        value_sets: annotate_text
+        region_tag: annotate_text
+
