@@ -1,0 +1,8 @@
+api_name: tasks
+api_version: v2beta3
+artifact_type: GAPIC
+organization_name: google-cloud
+proto_deps:
+- name: google-common-protos
+proto_path: google/cloud/tasks/v2beta3
+release_level: null
