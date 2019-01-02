@@ -92,18 +92,18 @@ interfaces:
         - document.type=PLAIN_TEXT
         - document.content="Your text to analyze, e.g. Hello, world!"
         - encoding_type=NONE
-        on_success:
-        - loop:
-            variable: entity
-            collection: $resp.entities
-            body:
-              print:
-                - "entity: %s"
-                - entity
-        - define: lang = $resp.language
-        - print:
-            - "language in the response: %s"
-            - lang
+      on_success:
+      - loop:
+          variable: entity
+          collection: $resp.entities
+          body:
+          - print:
+              - "entity: %s"
+              - entity
+      - define: lang = $resp.language
+      - print:
+          - "language in the response: %s"
+          - lang
     samples:
       standalone:
       - calling_forms: ".*"
@@ -174,18 +174,18 @@ interfaces:
           sample_argument_name: should_extract_syntax_info
         - parameter: features.extract_entities
           sample_argument_name: extract_entities
-        on_success:
-        - loop:
-            variable: entity
-            collection: $resp.entities
-            body:
-              print:
-                - "entity: %s"
-                - entity
-        - define: lang = $resp.language
-        - print:
-            - "language in the response: %s"
-            - lang
+      on_success:
+      - loop:
+          variable: entity
+          collection: $resp.entities
+          body:
+            - print:
+              - "entity: %s"
+              - entity
+      - define: lang = $resp.language
+      - print:
+          - "language in the response: %s"
+          - lang
     samples:
       standalone:
       - calling_forms: ".*"

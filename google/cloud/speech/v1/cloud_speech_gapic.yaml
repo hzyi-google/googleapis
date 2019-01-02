@@ -101,14 +101,14 @@ interfaces:
         attributes:
         - parameter: audio.content
           read_file: true
-        on_success:
-        - loop:
-            variable: alternative
-            collection: $resp.results[0].alternatives
-            body:
-              print:
-                - "alternative: %s"
-                - alternative
+      on_success:
+      - loop:
+          variable: alternative
+          collection: $resp.results[0].alternatives
+          body:
+          - print:
+              - "alternative: %s"
+              - alternative
     samples:
       standalone:
       - calling_forms: ".*"
@@ -125,21 +125,20 @@ interfaces:
       description: "Proof of concept for streaming recognize"
       parameters:
         defaults:
-        - audio.content=path/to/audio.wav
+        - audio_content=path/to/audio.wav
         attributes:
-        - parameter: audio.content
+        - parameter: audio_content
           read_file: true
           sample_argument_name: audio_content_file_name
-        on_success:
-        - loop:
-            variable: alternative
-            collection: $resp.results[0].alternatives
-            body:
-              define:
-                - alt = alternative
-              print:
-                - "alternative: %s"
-                - alt
+      on_success:
+      - loop:
+          variable: alternative
+          collection: $resp.results[0].alternatives
+          body:
+          - define: alt = alternative
+          - print:
+            - "alternative: %s"
+            - alt
     samples:
       standalone:
       - calling_forms: ".*"
